@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User, Group
 
 
 class Ingredients(models.Model):
@@ -48,8 +49,6 @@ class Recipe(models.Model):
     Img = models.ImageField(height_field=None, width_field=None, null=True, blank=True)
     CreateDate = models.DateTimeField(auto_now=True)
     CountryID = models.ForeignKey(Country, on_delete=models.CASCADE)
-    CategoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
-    IngredientsID = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.Name}, {self.Instruction}"
@@ -59,9 +58,38 @@ class Recipe(models.Model):
         verbose_name_plural = 'Рецепты'
 
 
+class RecipeCategory(models.Model):
+    ID = models.AutoField(primary_key=True)
+    RecipeID = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    CategoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ID
+
+    class Meta:
+        verbose_name = 'ID Категории'
+        verbose_name_plural = 'ID Категорий'
+
+
+class IngredientsRecipe(models.Model):
+    ID = models.AutoField(primary_key=True)
+    RecipeID = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    IngredientsID = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ID
+
+    class Meta:
+        verbose_name = 'ID Ингредиента'
+        verbose_name_plural = 'ID Ингредиентов'
+
+
 class RecipeUser(models.Model):
     RecipeID = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    # Userid = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    Userid = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.RecipeID
 
     class Meta:
         verbose_name = 'Автор рецепта'
@@ -70,10 +98,10 @@ class RecipeUser(models.Model):
 
 class Recommendation(models.Model):
     RecommendationID = models.AutoField(primary_key=True)
-    # UserID = models.ForeignKey(, on_delete=models.CASCADE)
+    Userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def str(self):
-        return
+    def __str__(self):
+        return self.RecommendationID
 
     class Meta:
         verbose_name = 'Совет'
