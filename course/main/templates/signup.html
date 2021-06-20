@@ -1,18 +1,109 @@
-<!doctype html>
-<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<title>Login V4</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'registerstyle/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'registerstyle/css/main.css' %}">
+<!--===============================================================================================-->
 </head>
 <body>
-    <h2>Sign up</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign up</button>
-        </form>
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url({% static 'registerstyle/images/bg-01.jpg' %});">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form class="login100-form validate-form" method="post">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-49">
+						Login
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Имя пользователя обязательно" style="margin-top:20px">
+						<span class="label-input100">Логин</span>
+						<input class="input100" placeholder="Введите имя" type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Пароль обязателен" style="margin-top:20px">
+						<span class="label-input100">Пароль</span>
+						<input class="input100" placeholder="Введите пароль" type="password" name="password1" autocomplete="new-password" required id="id_password1">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Пароли не совпадают" style="margin-top:20px">
+						<span class="label-input100">Пароль ещё раз</span>
+						<input class="input100" placeholder="Повторите пароль" type="password" name="password2" autocomplete="new-password" required id="id_password2">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					{% if form.errors %}
+   						<ul>
+							<li>Возможно такой логин уже занят</li>
+							<li>Пароль не должен быть слишком похож на другую вашу личную информацию.</li>
+							<li>Ваш пароль должен содержать как минимум 8 символов.</li>
+							<li>Такой пароль часто используется.</li>
+							<li>Пароль не может состоять только из цифр.</li>
+						</ul>
+					{% endif %}
+
+					<div class="container-login100-form-btn" style="margin-top:50px">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Зарегистрироваться
+							</button>
+						</div>
+					</div>
+
+					<div class="flex-col-c p-t-155" >
+						<a href="/accounts/login" class="txt2">
+							Уже есть аккаунт?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'registerstyle/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'registerstyle/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registerstyle/js/main.js' %}js/main.js"></script>
+
 </body>
 </html>

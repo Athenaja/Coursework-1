@@ -45,7 +45,7 @@
             navText: ['Prev', 'Next'],
             dots: true,
             autoplay: true,
-            autoplayTimeout: 5000,
+            autoplayTimeout: 10000,
             smartSpeed: 1000
         });
 
@@ -93,7 +93,7 @@
             navText: ['Prev', 'Next'],
             dots: true,
             autoplay: true,
-            autoplayTimeout: 5000,
+            autoplayTimeout: 10000,
             smartSpeed: 1000
         });
     }
