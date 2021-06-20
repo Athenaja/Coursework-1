@@ -55,9 +55,11 @@
                         <div class="breaking-news">
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="#">Hello World!</a></li>
-                                    <li><a href="#">Welcome to Colorlib Family.</a></li>
-                                    <li><a href="#">Hello Delicious!</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="#">Привет, {{ user.username }}!</a></li>
+                                    {% endif %}
+                                    <li><a href="#">Добро пожаловать на лучший сайт с рецептами!</a></li>
+                                    <li><a href="#">Приятного аппетита!</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -81,9 +83,6 @@
                 </div>
             </div>
         </div>
-         {% if user.is_authenticated %}
-            <p>Hi {{ user.username }}!</p>
-        {% endif %}
         <!-- Navbar Area -->
         <div class="delicious-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -180,7 +179,7 @@
                                     </li>
                                     <li><a href="receipe-post.html">Receipies</a></li>
                                     <li><a href="receipe-post.html">4 Vegans</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="category/">Contact</a></li>
                                 </ul>
 
                                 <!-- Newsletter Form -->
@@ -311,106 +310,11 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                 </div>
-                                <p>{{ el.Instruction }}</p>
+                                <p>11<!--{{ el.Instruction }}--></p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/r2.jpg' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Homemade Burger</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/r3.jpg' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Vegan Smoothie</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/r4.jpg' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Calabasa soup</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/r5.jpg' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Homemade Breakfast</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/r6.jpg' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="receipe-post.html">
-                                <h5>Healthy Fruit Desert</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
