@@ -431,7 +431,7 @@ textarea:focus {
     @media only screen and (max-width: 767px) {
       .header-area .top-header-area {
         height: 70px; } }
-    .header-area .top-header-area .breaking-news {
+    .header-area .top-header-area .breaking-news-index {
       position: relative;
       z-index: 1; }
       .header-area .top-header-area .breaking-news .ticker {

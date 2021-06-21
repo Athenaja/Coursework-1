@@ -114,10 +114,7 @@
         $.preventDefault();
     });
 
-    // :: 10.0 Wow Active Code
-    if (browserWindow.width() > 767) {
-        new WOW().init();
-    }
+
 
     // :: 11.0 niceScroll Active Code
     if ($.fn.niceScroll) {

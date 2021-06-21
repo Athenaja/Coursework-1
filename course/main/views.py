@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Recipe, Category
+from .models import Recipe, Category, Country
 
 
 def index(request):
@@ -11,5 +11,10 @@ def index(request):
 
 
 def category(request):
-    recipe = Category.objects.all()
-    return render(request, 'main/category.html', {'recipe': recipe})
+    category = Category.objects.all()
+    return render(request, 'main/category.html', {'category': category})
+
+
+def card(request):
+    country = Country.objects.all()
+    return render(request, 'main/card.html', {'country': country})
