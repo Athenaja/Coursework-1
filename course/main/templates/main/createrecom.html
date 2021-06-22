@@ -24,7 +24,14 @@
       crossorigin="anonymous"
     ></script>
 
+    <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+    .recop{
+    margin-left: 10% !important;
+    width: 70% !important;
+    }
+    </style>
   </head>
 
   <body>
@@ -103,12 +110,12 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                   <ul>
-                    <li><a href="../">Главная</a></li>
+                    <li><a href="../../">Главная</a></li>
                     <li><a href="#">Pages</a></li>
                     <li><a href="#">Mega Menu</a></li>
-                    <li><a href="../recomendation/">Советы</a></li>
-                    <li><a href="../card/">4 Vegans</a></li>
-                    <li><a href="../category/">Категории</a></li>
+                    <li><a href="../../recomendation/">Советы</a></li>
+                    <li><a href="../../card/">4 Vegans</a></li>
+                    <li><a href="../../category/">Категории</a></li>
                   </ul>
                 </div>
                 <!-- Nav End -->
@@ -119,11 +126,35 @@
       </div>
     </header>
 
-    <form method="post">
+  <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-content">
+        <h3>Cooking in progress..</h3>
+        <div id="cooking">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div id="area">
+            <div id="sides">
+              <div id="pan"></div>
+              <div id="handle"></div>
+            </div>
+            <div id="pancake">
+              <div id="pastry"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form method="post" class="recop">
       {% csrf_token %}
       {{ form.Name }}<br>
       {{ form.Instruction }}<br>
       {{ form.Img }}<br>
+      <p>{{ user.id }}</p><br>
       <br>
       <button type="submit" class="btn btn-success">Добавить</button>
       <br>
@@ -181,5 +212,15 @@
     <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
+
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
   </body>
 </html>

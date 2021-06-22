@@ -1,243 +1,386 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Bueno - Food Blog HTML Template</title>
-      <!-- Bootstrap CSS (jsDelivr CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-  <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS (jsDelivr CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+
+
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <!-- Favicon -->
     <!-- Core Stylesheet -->
 
     <!-- Stylesheet -->
 
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'categorystyle/style.css' %}" />
 
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'categorystyle/style.css' %}">
-
-  <style>
-	/* :: 11.0 Ingredients Area CSS */
-.recipe-info {
-  position: relative;
-  z-index: 1;
-  background-color: #b0c364;
-  padding: 50px 20px;
-  margin-bottom: 30px; }
-  .recipe-info h5 {
-    color: #ffffff;
-    margin-bottom: 50px;
-    font-size: 18px;
-    padding-left: 30px; }
-  .recipe-info .info-data {
-    position: relative;
-    z-index: 1; }
-    .recipe-info .info-data li {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -ms-grid-row-align: center;
-      align-items: center;
-      padding: 10px 30px;
-      border-bottom: 2px solid #a3b65a;
-      font-size: 16px;
-      font-weight: 600; }
+    <style>
+      /* :: 11.0 Ingredients Area CSS */
+      .recipe-info {
+        position: relative;
+        z-index: 1;
+        background-color: #b0c364;
+        padding: 50px 20px;
+        margin-bottom: 30px;
+      }
+      .recipe-info h5 {
+        color: #ffffff;
+        margin-bottom: 50px;
+        font-size: 18px;
+        padding-left: 30px;
+      }
+      .recipe-info .info-data {
+        position: relative;
+        z-index: 1;
+      }
+      .recipe-info .info-data li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -ms-grid-row-align: center;
+        align-items: center;
+        padding: 10px 30px;
+        border-bottom: 2px solid #a3b65a;
+        font-size: 16px;
+        font-weight: 600;
+      }
       .recipe-info .info-data li:last-child {
-        border-bottom: none; }
+        border-bottom: none;
+      }
       .recipe-info .info-data li span {
         color: #ffffff;
-        padding-left: 15px; }
+        padding-left: 15px;
+      }
 
-.ingredients {
-  position: relative;
-  z-index: 1;
-  background-color: #ebf4f6;
-  padding: 50px 20px; }
-  .ingredients h5 {
-    color: #272727;
-    margin-bottom: 50px;
-    font-size: 18px;
-    padding-left: 30px; }
-  .ingredients .custom-control {
-    padding-left: 2.5rem;
-    margin-bottom: 20px;
-    min-height: 35px;
-    position: relative;
-    z-index: 1;
-    border-bottom: 2px solid #d6e1e4;
-    padding-bottom: 20px; }
-    .ingredients .custom-control .custom-control-label {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0;
-      padding-top: 3px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #8b8b8b;
-      padding-left: 10px; }
+      .ingredients {
+        position: relative;
+        z-index: 1;
+        background-color: #ebf4f6;
+        padding: 50px 20px;
+      }
+      .ingredients h5 {
+        color: #272727;
+        margin-bottom: 50px;
+        font-size: 18px;
+        padding-left: 30px;
+      }
+      .ingredients .custom-control {
+        padding-left: 2.5rem;
+        margin-bottom: 20px;
+        min-height: 35px;
+        position: relative;
+        z-index: 1;
+        border-bottom: 2px solid #d6e1e4;
+        padding-bottom: 20px;
+      }
+      .ingredients .custom-control .custom-control-label {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0;
+        padding-top: 3px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #8b8b8b;
+        padding-left: 10px;
+      }
       .ingredients .custom-control .custom-control-label::before {
         width: 22px;
         height: 22px;
         border: 1px solid;
         border-color: #d6e1e4;
         background-color: #ffffff;
-        border-radius: 0; }
+        border-radius: 0;
+      }
       .ingredients .custom-control .custom-control-label::after {
         top: 5px;
         left: -23px;
         width: 20px;
-        height: 20px; }
-  .ingredients .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #b0c364; }
-  </style>
-</head>
+        height: 20px;
+      }
+      .ingredients
+        .custom-checkbox
+        .custom-control-input:checked
+        ~ .custom-control-label::before {
+        background-color: #b0c364;
+      }
+    </style>
+  </head>
 
-<body>
-<header class="header-area">
-
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-between">
-                    <!-- Breaking News -->
-                    <div class="col-12 col-sm-6">
-                        <div class="breaking-news">
-                            <div id="breakingNewsTicker" class="ticker">
-                                <ul>
-                                    <li><a href="#">Приятного аппетита!</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Top Social Info -->
-                    <div class="col-12 col-sm-6">
-                        <div class="top-social-info text-right">
-                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'logout' %}"><i aria-hidden="true">Log out</i></a>
-                            {% else %}
-                                <a href="{% url 'login' %}"><i aria-hidden="true">Log In</i></a>
-                            {% endif %}
-                        </div>
-                    </div>
+  <body>
+    <header class="header-area">
+      <!-- Top Header Area -->
+      <div class="top-header-area">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center justify-content-between">
+            <!-- Breaking News -->
+            <div class="col-12 col-sm-6">
+              <div class="breaking-news">
+                <div id="breakingNewsTicker" class="ticker">
+                  <ul>
+                    <li><a href="#">Приятного аппетита!</a></li>
+                  </ul>
                 </div>
+              </div>
             </div>
+
+            <!-- Top Social Info -->
+            <div class="col-12 col-sm-6">
+              <div class="top-social-info text-right">
+                <a href="#"
+                  ><i class="fa fa-pinterest" aria-hidden="true"></i
+                ></a>
+                <a href="#"
+                  ><i class="fa fa-facebook" aria-hidden="true"></i
+                ></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"
+                  ><i class="fa fa-dribbble" aria-hidden="true"></i
+                ></a>
+                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"
+                  ><i aria-hidden="true">Log out</i></a
+                >
+                {% else %}
+                <a href="{% url 'login' %}"><i aria-hidden="true">Log In</i></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
         </div>
-    <!-- Navbar Area -->
-        <div class="delicious-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="deliciousNav">
+      </div>
+      <!-- Navbar Area -->
+      <div class="delicious-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+          <div class="container">
+            <!-- Menu -->
+            <nav
+              class="classy-navbar justify-content-between"
+              id="deliciousNav"
+            >
+              <!-- Logo -->
+              <a class="nav-brand" href="index.html"
+                ><img src="{% static 'img/core-img/logo.png' %}" alt=""
+              /></a>
 
-                        <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+              <!-- Navbar Toggler -->
+              <div class="classy-navbar-toggler">
+                <span class="navbarToggler"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="../">Главная</a></li>
-                                    <li><a href="#">Pages</a></li>
-                                    <li><a href="#">Mega Menu</a></li>
-                                    <li><a href="../recomendation/">Receipies</a></li>
-                                    <li class="active"><a href="../card/">4 Vegans</a></li>
-                                    <li><a href="../category/">Категории</a></li>
-                                </ul>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
+              <!-- Menu -->
+              <div class="classy-menu">
+                <!-- close btn -->
+                <div class="classycloseIcon">
+                  <div class="cross-wrap">
+                    <span class="top"></span><span class="bottom"></span>
+                  </div>
                 </div>
-            </div>
-        </div>>
-</header>
- <!-- Preloader -->
+
+                <!-- Nav Start -->
+                <div class="classynav">
+                    <ul>
+                        <li><a href="../">Главная</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Mega Menu</a></li>
+                        <li><a href="../recomendation/">Receipies</a></li>
+                        <li><a href="../card/">4 Vegans</a></li>
+                        <li><a href="../category/">Категории</a></li>
+                    </ul>
+                </div>
+                <!-- Nav End -->
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-content">
-            <h3>Cooking in progress..</h3>
-            <div id="cooking">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div id="area">
-                    <div id="sides">
-                        <div id="pan"></div>
-                        <div id="handle"></div>
-                    </div>
-                    <div id="pancake">
-                        <div id="pastry"></div>
-                    </div>
-                </div>
+      <div class="preloader-content">
+        <h3>Cooking in progress..</h3>
+        <div id="cooking">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div id="area">
+            <div id="sides">
+              <div id="pan"></div>
+              <div id="handle"></div>
             </div>
+            <div id="pancake">
+              <div id="pastry"></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-     <!-- Ingredients -->
-                    <div class="ingredients">
-                        <h5>Ingredients</h5>
-                        {% for el in country %}
-                                <!-- Custom Checkbox -->
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck{{el.CountryID}}">
-                                    <label class="custom-control-label" for="customCheck{{el.CountryID}}"> {{ el.Name }}</label>
-                                </div>
-                        {% endfor %}
-                    </div>
-
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info text-right">
-                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
-                    <!-- Footer Logo -->
-                    <div class="footer-logo">
-                        <a href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-                    </div>
-                    <!-- Copywrite -->
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    <section class="post-news-area section-padding-100-0 mb-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Post Details Content Area -->
+          <div class="col-12 col-lg-4 col-xl-5">
+            <div class="post-details-content mb-100">
+              <div class="blog-thumbnail mb-30">
+                <img src="{% static 'img/bg-img/bg9.jpg' %}" alt="" />
+              </div>
+              <div class="blog-content">
+                <a href="#" class="post-tag">Имя категории</a>
+                <h4 class="post-title">Название рецепта</h4>
+                <div class="post-meta mb-30">
+                  <p>Дата добавления рецепта</p>
+                </div>
+                <h5 class="mb-30">Описание рецепта</h5>
+                <p class="mb-30">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                  tristique justo id elit bibendum pharetra non vitae lectus.
+                  Mauris libero felis, dapibus a ultrices sed, commodo vitae
+                  odio. Sed auctor tellus quis arcu tempus. Lorem ipsum dolor
+                  sit amet, consectetur adipiscing elit. Etiam ac tincidunt
+                  nunc. Cras sed mollis erat. Quisque risus lorem, mattis nec
+                  nisl a, efficitur faucibus ligula. Nulla facilisi. Integer
+                  sodales, metus nec finibus lobortis, ex justo pharetra quam,
+                  vel vehicula urna turpis ut risus. Sed dignissim erat sapien,
+                  non malesuada justo cursus nec. Nunc porta pulvinar varius.
+                </p>
+              </div>
+              <div class="main-rating ml-0">
+                <h5 class="mb-0">Оцените данный рецепт</h5>
+                <div class="rating">
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
                 </div>
             </div>
-        </div>
-    </footer>
+            </div>
+          </div>
 
+          <div class="col-12 col-lg-4 col-xl-4">
+            <!-- Ingredients -->
+            <div class="ingredients">
+              <h5>Ингридиенты</h5>
+              {% for el in country %}
+              <!-- Custom Checkbox -->
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customCheck{{el.CountryID}}"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customCheck{{el.CountryID}}"
+                >
+                  {{ el.Name }}</label
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Sidebar Widget -->
+          <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+            <div class="sidebar-area">
+              <!-- Single Widget Area предлагаю выводить 6 рандомных рецептов-->
+              <div class="single-widget-area post-widget mb-30">
+                <!-- Single Post Area -->
+
+                <div class="single-post-area v-flex">
+                  <!-- Blog Thumbnail -->
+                  <div class="blog-thumbnail">
+                    <img src="{% static 'img/bg-img/bg9.jpg' %} " alt="" />
+                  </div>
+                  <!-- Blog Content -->
+                  <div class="blog-content">
+                    <a href="#" class="post-title">Friend eggs with ham</a>
+                    <div class="post-meta">
+                      <a href="#" class="post-date">July 11, 2018</a>
+                    </div>
+                    <div class="post-meta">
+                        <a href="#" class="post-author">By Julia Stiles</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-area">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div
+            class="
+              col-12
+              h-100
+              d-flex
+              flex-wrap
+              align-items-center
+              justify-content-between
+            "
+          >
+            <!-- Footer Social Info -->
+            <div class="footer-social-info text-right">
+              <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+            <!-- Footer Logo -->
+            <div class="footer-logo">
+              <a href="index.html"
+                ><img src="{% static 'img/core-img/logo.png' %}" alt=""
+              /></a>
+            </div>
+            <!-- Copywrite -->
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart-o" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -245,8 +388,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
 
-
-
-</body>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+  </body>
 
 </html>

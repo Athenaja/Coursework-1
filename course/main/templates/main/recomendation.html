@@ -24,8 +24,17 @@
       crossorigin="anonymous"
     ></script>
 
+    <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}">
     <link rel="stylesheet" href="{% static 'recomendationstyle/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+    .redou{
+    width: 100%;
+    }
+    .redou1{
+    text-align: center !important;
+    }
+    </style>
   </head>
 
   <body>
@@ -119,7 +128,28 @@
         </div>
       </div>
     </header>
-
+  <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-content">
+        <h3>Cooking in progress..</h3>
+        <div id="cooking">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div id="area">
+            <div id="sides">
+              <div id="pan"></div>
+              <div id="handle"></div>
+            </div>
+            <div id="pancake">
+              <div id="pastry"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Welcome Area Starts -->
     <section class="welcome-area section-padding2">
       <div class="container-fluid">
@@ -134,8 +164,8 @@
             </div>
           </div>
           <div class="col-md-6 align-self-center">
-            <div class="welcome-text mt-5 mt-md-0">
-              <h3>
+            <div class="welcome-text mt-5 mt-md-0 redou1">
+              <h3 class="redou">
                 <span class="style-change">Кулинарные</span> <br />полезности
               </h3>
               <p class="pt-3">
@@ -179,7 +209,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="section-top2 text-center">
-              <h3>Our <span>special</span> deshes</h3>
+              <h3 class="redou">Our <span>special</span> deshes</h3>
               <p>
                 <i
                   >Полезные кулинарные советы и хитрости, которые могут пригодиться не только на кухне...</i
@@ -260,5 +290,15 @@
     <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
+
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
   </body>
 </html>

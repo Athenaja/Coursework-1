@@ -10,6 +10,35 @@
 @import url(css/font-awesome.min.css);
 @import url(css/nice-select.css);
 /* :: 3.0 Base CSS */
+a,
+a:hover,
+a:focus {
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  text-decoration: none;
+  outline: 0 solid transparent;
+  color: #000000;
+  font-weight: 600;
+  font-size: 14px;
+  color: #474747; }
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 45px;
+  color: gold;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+
 
 
 /* :: 3.1.0 Spacing */
@@ -105,7 +134,7 @@
 /* :: 3.3.0 Section Padding */
 
 .section-padding-100-0 {
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 0;
 }
 
@@ -467,15 +496,33 @@ h3 {
   .single-post-catagory .catagory-content-bg .catagory-content .post-title {
     font-size: 18px;
   }
+  .rating {
+    font-size: 45px;
+  }
+  .rating > span {
+    width: 1em;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .single-post-catagory .catagory-content-bg .catagory-content .post-title {
     font-size: 18px;
   }
+  .rating {
+    font-size: 38px;
+  }
+  .rating > span {
+    width: 0.8em;
+  }
 }
 @media only screen and (max-width: 767px) {
   .single-post-catagory .catagory-content-bg .catagory-content .post-title {
     font-size: 18px;
+  }
+  .rating {
+    font-size: 30px;
+  }
+  .rating > span {
+    width: 0.5em;
   }
 }
 .single-post-catagory:hover,
