@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700");
+
+.redo{
+margin-left:20%;
+max-width: 70% !important;
+}
+
+.redo1{
+margin-left:20%;
+max-width: 70% !important;
+}
+
+.welcome-area .style-change {
+  color: #40ba37;
+  font-style: italic;
+}
+.welcome-area .welcome-img {
+  padding-left: 10%;
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .welcome-area .welcome-img {
+    padding: 0;
+  }
+}
+@media (max-width: 575.98px) {
+  .welcome-area .welcome-img {
+    padding: 0;
+  }
+}
+.welcome-area .welcome-text {
+  padding-right: 50%;
+}
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .welcome-area .welcome-text {
+    padding-right: 30%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .welcome-area .welcome-text {
+    padding-right: 10%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .welcome-area .welcome-text {
+    padding-right: 10%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .welcome-area .welcome-text {
+    padding: 0 5%;
+  }
+}
+@media (max-width: 575.98px) {
+  .welcome-area .welcome-text {
+    padding: 0 5%;
+  }
+}
+
+.style-change {
+  color: #40ba37;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.style-change {
+  color: #131230;
+}
+
+.deshes-area span {
+  color: #40ba37;
+}
+.deshes-area h1 {
+  color: #131230;
+  font-style: inherit;
+  position: relative;
+}
+.deshes-area h1:after {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 90px;
+  width: 200px;
+  height: 1px;
+  background: #131230;
+}
+.deshes-area .style-change {
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  display: block;
+}
+.deshes-area .deshes-text {
+    margin-top: 100px;
+  padding-left: 0px;
+  width: 700px;
+}
+@media (max-width: 575.98px) {
+  .deshes-area .deshes-text {
+    padding-left: 0;
+    margin-top: 10px;
+  }
+}
+.section-top2{
+    margin-top: 45px;
+}
+
+.table-area .section-top2 h3,
+.table-area .section-top2 p {
+  color: #fff;
+}
+.table-area .input-group {
+  width: 30.33%;
+  float: left;
+  overflow: hidden;
+  margin: 0 1.5%;
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .table-area .input-group {
+    width: 100%;
+    float: none;
+  }
+}
+@media (max-width: 575.98px) {
+  .table-area .input-group {
+    width: 100%;
+    float: none;
+  }
+}
+.table-area input {
+  border-radius: 0 5px 5px 0;
+  border: none;
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .table-area input {
+    width: 65%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .table-area input {
+    width: 70%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .table-area input {
+    width: 87%;
+  }
+}
+@media (max-width: 575.98px) {
+  .table-area input {
+    width: 80%;
+  }
+}
+.table-area .input-group-text {
+  background: #fff;
+  padding: 14px 20px;
+}
+.table-area .table-btn {
+  clear: both;
+}
+
