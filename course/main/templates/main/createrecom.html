@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <form method="post" class="recop">
+    <form method="post" class="recop" enctype= "multipart/form-data">
       {% csrf_token %}
       {{ form.Name }}<br>
       {{ form.Instruction }}<br>

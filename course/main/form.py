@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 
 
 class RecommendationForm(ModelForm):
+
     class Meta:
         model = Recommendation
-        fields = ["Name", "Instruction", "Img", "Userid"]
+        fields = ["Name", "Instruction", "Img"]
         widgets = {
             "Name": TextInput(attrs={
                 'class': 'form-control ml-100 mr-100',

@@ -1,14 +1,24 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Recipe, Category, Country, Recommendation
+from .models import Recipe, Category, Country, Recommendation, Rating
 from .form import RecommendationForm
+from django.contrib.auth.models import User
 
 
 def index(request):
-    recipe = Recipe.objects.all()[:6]
-    # recipedata = Recipe.objects.get(Name='Кимпаб')
-    # recipedata = Recipe.objects.order_by("-CreateDate")
-    return render(request, 'main/index.html', {'recipe': recipe})
+    # recipe = Recipe.objects.all()[:6]
+    # <class 'django.db.models.query.QuerySet'>
+    # recipe = Recipe.objects.get(Name='Кимпаб').
+    # recipe = Recipe.objects.filter(Name='Кимпаб')
+    # <class 'main.models.Recipe'>
+    # recipe = Recipe.objects.order_by("-CreateDate")
+    recipe1 = Recipe.objects.all()[:6]
+    recipe2 = Recipe.objects.order_by("-CreateDate")[:9]
+    recipe3 = Recipe.objects.filter(rating__Rating="5")
+    recipe4 = Rating.objects.all()
+
+    recipe = {"recipe1": recipe1, "recipe2": recipe2, "recipe3": recipe3, "recipe4": recipe4}
+    return render(request, 'main/index.html', recipe)
 
 
 def category(request):
@@ -29,9 +39,11 @@ def recom(request):
 def createrecom(request):
     error = ''
     if request.method == 'POST':
-        form = RecommendationForm(request.POST)
+        form = RecommendationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            thought = form.save(commit=False)
+            thought.Userid = User.objects.get(pk=request.user.id)
+            thought.save()
             redirect('recomendation/')
         else:
             error = 'Форма была неверной'
