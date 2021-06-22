@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Recipe, Category, Country
+from .models import Recipe, Category, Country, Recommendation
+from .form import RecommendationForm
 
 
 def index(request):
@@ -18,3 +19,16 @@ def category(request):
 def card(request):
     country = Country.objects.all()
     return render(request, 'main/card.html', {'country': country})
+
+
+def recom(request):
+    recomendation = Recommendation.objects.all()
+    return render(request, 'main/recomendation.html', {'recomendation': recomendation})
+
+
+def createrecom(request):
+    form = RecommendationForm
+    createrecom = {
+        'form': form
+    }
+    return render(request, 'main/createrecom.html', createrecom)

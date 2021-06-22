@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Ingredients, Category, Country, RecipeUser, Recommendation, RecommendationUser, Rating, RecipeCategory, IngredientsRecipe
+from .models import Recipe, Ingredients, Category, Country, RecipeUser, Recommendation, Rating, RecipeCategory, IngredientsRecipe
 
 admin.site.register(Recipe)
 admin.site.register(RecipeCategory)
@@ -9,7 +9,6 @@ admin.site.register(Category)
 admin.site.register(Country)
 admin.site.register(RecipeUser)
 admin.site.register(Recommendation)
-admin.site.register(RecommendationUser)
 admin.site.register(Rating)
 
 

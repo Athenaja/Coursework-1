@@ -65,7 +65,7 @@ class RecipeCategory(models.Model):
     CategoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.ID
+        return str(self.ID)
 
     class Meta:
         verbose_name = 'ID Категории'
@@ -76,10 +76,10 @@ class IngredientsRecipe(models.Model):
     ID = models.AutoField(primary_key=True)
     RecipeID = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     IngredientsID = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
-    CountsOnRecipe = models.IntegerField()
+    CountsOnRecipe = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.ID
+        return str(self.ID)
 
     class Meta:
         verbose_name = 'ID Ингредиента'
@@ -91,7 +91,7 @@ class RecipeUser(models.Model):
     Userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.RecipeID
+        return str(self.RecipeID)
 
     class Meta:
         verbose_name = 'Автор рецепта'
@@ -100,29 +100,18 @@ class RecipeUser(models.Model):
 
 class Recommendation(models.Model):
     RecommendationID = models.AutoField(primary_key=True)
-    Userid = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.RecommendationID
-
-    class Meta:
-        verbose_name = 'Совет'
-        verbose_name_plural = 'Советы'
-
-
-class RecommendationUser(models.Model):
-    RecommendationID = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
     Name = models.CharField(max_length=100)
     Instruction = models.TextField()
     Img = models.ImageField(height_field=None, width_field=None, null=True, blank=True)
     CreateDate = models.DateTimeField(auto_now=True)
+    Userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def str(self):
         return f"{self.Name}, {self.CreateDate}"
 
     class Meta:
-        verbose_name = 'Автор совета'
-        verbose_name_plural = 'Авторы совета'
+        verbose_name = 'Совет'
+        verbose_name_plural = 'Советы'
 
 
 class Rating(models.Model):

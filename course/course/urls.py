@@ -12,5 +12,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('category/', include('main.urls')),
     path('card/', include('main.urls')),
+    path('recomendation/', include('main.urls')),
+    path('recomendation/createrecom/', include('main.urls')),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 print(settings.BASE_DIR, settings.MEDIA_ROOT)
