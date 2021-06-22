@@ -121,11 +121,13 @@
 
     <form method="post">
       {% csrf_token %}
-      {{ form.Name }}
-      <input type="text" placeholder="" class="form-control"><br>
-      <textarea placeholder="" class="form-control"></textarea><br>
-      <input type="text" placeholder="" class="form-control"><br>
+      {{ form.Name }}<br>
+      {{ form.Instruction }}<br>
+      {{ form.Img }}<br>
+      <br>
       <button type="submit" class="btn btn-success">Добавить</button>
+      <br>
+      <span>{{ error }}</span>
     </form>
 
     <!-- ##### Footer Area Start ##### -->

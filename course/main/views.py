@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Recipe, Category, Country, Recommendation
 from .form import RecommendationForm
@@ -27,8 +27,18 @@ def recom(request):
 
 
 def createrecom(request):
-    form = RecommendationForm
+    error = ''
+    if request.method == 'POST':
+        form = RecommendationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            redirect('recomendation/')
+        else:
+            error = 'Форма была неверной'
+
+    form = RecommendationForm()
     createrecom = {
-        'form': form
+        'form': form,
+        'error': error
     }
     return render(request, 'main/createrecom.html', createrecom)
