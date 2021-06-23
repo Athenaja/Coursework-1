@@ -154,3 +154,17 @@ class Rating(models.Model):
     class Meta:
         verbose_name = 'Рейтинг'
         verbose_name_plural = 'Рейтинги'
+
+
+class EquipmentTips(models.Model):
+    EquipmentTipsID = models.AutoField(primary_key=True)
+    EquipmentTipsName = models.CharField(max_length=100)
+    EquipmentTipsDescriptions = models.TextField()
+    EquipmentTipsImg = models.ImageField(height_field=None, width_field=None, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.EquipmentTipsName)
+
+    class Meta:
+        verbose_name = 'Советы по оборудованию'
+        verbose_name_plural = 'Совет по оборудованию'

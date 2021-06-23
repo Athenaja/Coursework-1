@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients, Dictionary # Order
+from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips # Order
 from .form import RecommendationForm, RecipeForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -107,3 +107,8 @@ def createrecipe(request):
         'country4': country4
     }
     return render(request, 'main/createrecipe.html', createrecipe)
+
+
+def equipmentTips(request):
+    equipmentTips = EquipmentTips.objects.all()
+    return render(request, 'main/equipmentTips.html', {'equipmentTips': equipmentTips})

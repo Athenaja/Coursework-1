@@ -127,8 +127,12 @@ table td:before {
               <div class="breaking-news">
                 <div id="breakingNewsTicker" class="ticker">
                   <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="#">Привет, {{ user.username }}!</a></li>
+                    {% endif %}
+                    <li><a href="#">Добро пожаловать на лучший сайт с рецептами!</a></li>
                     <li><a href="#">Приятного аппетита!</a></li>
-                  </ul>
+                </ul>
                 </div>
               </div>
             </div>
@@ -191,7 +195,7 @@ table td:before {
                 <div class="classynav">
                   <ul>
                     <li><a href="../../">Главная</a></li>
-                    <li><a href="#">Pages</a></li>
+                    <li><a href="../../equipmentTips/">Правила</a></li>
                     <li><a href="../../dictionary/">Кулинарный словарь</a></li>
                     <li><a href="../../recomendation/">Советы</a></li>
                     <li><a href="../../tableproduct/">Таблица продуктов</a></li>

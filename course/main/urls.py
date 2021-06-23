@@ -12,6 +12,7 @@ urlpatterns = [
     path('createrecom/', views.createrecom),
     path('tableproduct/', views.tablepr),
     path('createrecipe/', views.createrecipe),
-    path('dictionary/', views.dictionary)
+    path('dictionary/', views.dictionary),
+    path('equipmentTips/', views.equipmentTips)
 ]
 
