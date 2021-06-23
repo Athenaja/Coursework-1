@@ -11,6 +11,7 @@ urlpatterns = [
     path('recomendation/', views.recom),
     path('createrecom/', views.createrecom),
     path('tableproduct/', views.tablepr),
-    path('createrecipe/', views.createrecipe)
+    path('createrecipe/', views.createrecipe),
+    path('dictionary/', views.dictionary)
 ]
 

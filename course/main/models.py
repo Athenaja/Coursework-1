@@ -58,6 +58,19 @@ class Country(models.Model):
         verbose_name_plural = 'Страны'
 
 
+class Dictionary(models.Model):
+    DictionaryID = models.AutoField(primary_key=True)
+    Name = models.CharField(max_length=100)
+    Description = models.TextField()
+
+    def __str__(self):
+        return self.Name
+
+    class Meta:
+        verbose_name = 'Определение'
+        verbose_name_plural = 'Определения'
+
+
 class Recipe(models.Model):
     RecipeID = models.AutoField(primary_key=True)
     Name = models.CharField(max_length=100)
