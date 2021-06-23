@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients
-from .form import RecommendationForm
+from .form import RecommendationForm, RecipeForm
 from django.contrib.auth.models import User
 
 
@@ -61,3 +61,23 @@ def createrecom(request):
         'error': error
     }
     return render(request, 'main/createrecom.html', createrecom)
+
+
+def createrecipe(request):
+    error = ''
+    if request.method == 'POST':
+        form1 = RecipeForm(request.POST, request.FILES)
+        if form1.is_valid():
+            thought = form1.save(commit=False)
+            thought.Userid = User.objects.get(pk=request.user.id)
+            thought.save()
+            redirect('createrecipe/')
+        else:
+            error = 'Форма была неверной'
+
+    form1 = RecipeForm()
+    createrecipe = {
+        'form1': form1,
+        'error': error
+    }
+    return render(request, 'main/createrecipe.html', createrecipe)

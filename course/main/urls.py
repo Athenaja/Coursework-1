@@ -10,6 +10,7 @@ urlpatterns = [
     path('card/', views.card),
     path('recomendation/', views.recom),
     path('createrecom/', views.createrecom),
-    path('tableproduct/', views.tablepr)
+    path('tableproduct/', views.tablepr),
+    path('createrecipe/', views.createrecipe)
 ]
 

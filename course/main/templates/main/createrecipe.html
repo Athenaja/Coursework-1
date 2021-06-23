@@ -25,14 +25,11 @@
     ></script>
 
     <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'recomendationstyle/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <style>
-    .redou{
-    width: 100%;
-    }
-    .redou1{
-    text-align: center !important;
+    .recop{
+    margin-left: 10% !important;
+    width: 70% !important;
     }
     </style>
   </head>
@@ -69,9 +66,7 @@
                 ></a>
                 <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}"
-                  ><i aria-hidden="true">Log out</i></a
-                >
+                <a href="{% url 'logout' %}"><i aria-hidden="true">Log out</i></a>
                 {% else %}
                 <a href="{% url 'login' %}"><i aria-hidden="true">Log In</i></a>
                 {% endif %}
@@ -90,7 +85,7 @@
               id="deliciousNav"
             >
               <!-- Logo -->
-              <a class="nav-brand" href="../"
+              <a class="nav-brand" href="../../"
                 ><img src="{% static 'img/core-img/logo.png' %}" alt=""
               /></a>
 
@@ -113,12 +108,12 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                   <ul>
-                    <li><a href="../">Главная</a></li>
+                    <li><a href="../../">Главная</a></li>
                     <li><a href="#">Pages</a></li>
                     <li><a href="#">Mega Menu</a></li>
-                    <li class="active"><a href="../recomendation/">Советы</a></li>
-                    <li><a href="../tableproduct/">Таблица продуктов</a></li>
-                    <li><a href="../category/">Категории</a></li>
+                    <li><a href="../../recomendation/">Советы</a></li>
+                    <li><a href="../../tableproduct/">Таблица продуктов</a></li>
+                    <li><a href="../../category/">Категории</a></li>
                   </ul>
                 </div>
                 <!-- Nav End -->
@@ -128,6 +123,7 @@
         </div>
       </div>
     </header>
+
   <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-content">
@@ -150,94 +146,19 @@
         </div>
       </div>
     </div>
-    <!-- Welcome Area Starts -->
-    <section class="welcome-area section-padding2">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 align-self-center">
-            <div class="welcome-img">
-              <img
-                src="{% static 'recomendationstyle/images/recome.jpg' %}"
-                class="img-fluid redo"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="col-md-6 align-self-center">
-            <div class="welcome-text mt-5 mt-md-0 redou1">
-              <h3 class="redou">
-                <span class="style-change">Кулинарные</span> <br />полезности
-              </h3>
-              <p class="pt-3">
-                Created god gathered don't you yielding herb you had. And isn't,
-                god was saw. Dominion. Great sixth for in unto was. Open can't
-                tree am waters brought. Divide after there. Was.
-              </p>
-              <p>
-                Created god gathered don't you yielding herb you had. And isn't,
-                god was saw. Dominion. Great sixth for in unto was. Open can't
-                tree waters brought. Divide after there. Was. Created god
-                gathered don't you yielding herb you had. And isn't god.
-              </p>
-              {% if user.is_authenticated %}
-              <a
-                href="createrecom/"
-                class="btn delicious-btn"
-                data-animation="fadeInUp"
-                data-delay="1000ms"
-                >Добавить полезность</a
-              >
-              {% else %}
-              <a
-                href="/accounts/login"
-                class="btn delicious-btn"
-                data-animation="fadeInUp"
-                data-delay="1000ms"
-                >Войдите для добавления совета</a
-              >
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Welcome Area End -->
 
-    <!-- Deshes Area Starts -->
-    <div class="deshes-area section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-top2 text-center">
-              <h3 class="redou">Our <span>special</span> deshes</h3>
-              <p>
-                <i
-                  >Полезные кулинарные советы и хитрости, которые могут пригодиться не только на кухне...</i
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-        {% for el in recomendation %}
-        <div class="row">
-          <div class="col-lg-5 col-md-6 align-self-center">
-            <div class="deshes-text">
-              <h2>
-                <span>{{ el.Name }}</span><br />
-              </h2>
-              <p class="pt-3">
-               {{ el.Instruction }}
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
-            <img src="{{ el.Img.url }}" class=" redo1" />
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <!-- Deshes Area End -->
+    <form method="post" class="recop" enctype= "multipart/form-data">
+      {% csrf_token %}
+      {{ form1.Name }}<br>
+      {{ form1.Instruction }}<br>
+      {{ form1.Img }}<br>
+      <br>
+      {{ form1.CountryID }}<br>
+      <br>
+      <button type="submit" class="btn btn-success">Добавить</button>
+      <br>
+      <span>{{ error }}</span>
+    </form>
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
