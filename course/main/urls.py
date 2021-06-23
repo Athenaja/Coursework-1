@@ -12,6 +12,9 @@ urlpatterns = [
     path('createrecom/', views.createrecom),
     path('tableproduct/', views.tablepr),
     path('createrecipe/', views.createrecipe),
-    path('dictionary/', views.dictionary)
+    path('dictionary/', views.dictionary),
+    path('equipmentTips/', views.equipmentTips),
+    path('dashboard/', views.dashboard_with_pivot, name='dashboard_with_pivot'),
+    path('dashboard/data/', views.pivot_data, name='pivot_data'),
 ]
 

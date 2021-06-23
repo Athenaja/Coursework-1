@@ -154,3 +154,31 @@ class Rating(models.Model):
     class Meta:
         verbose_name = 'Рейтинг'
         verbose_name_plural = 'Рейтинги'
+
+
+class EquipmentTips(models.Model):
+    EquipmentTipsID = models.AutoField(primary_key=True)
+    EquipmentTipsName = models.CharField(max_length=100)
+    EquipmentTipsDescriptions = models.TextField()
+    EquipmentTipsImg = models.ImageField(height_field=None, width_field=None, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.EquipmentTipsName)
+
+    class Meta:
+        verbose_name = 'Правило'
+        verbose_name_plural = 'Правила'
+
+
+class Order(models.Model):
+    product_category = models.CharField(max_length=20)
+    payment_method = models.CharField(max_length=50)
+    shipping_cost = models.CharField(max_length=50)
+    unit_price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return str(self.product_category)
+
+    class Meta:
+        verbose_name = 'Дашбоард'
+        verbose_name_plural = 'Дашбоард'
