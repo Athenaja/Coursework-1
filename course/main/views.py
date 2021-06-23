@@ -65,6 +65,10 @@ def createrecom(request):
 
 def createrecipe(request):
     error = ''
+    country1 = Country.objects.all()[:20]
+    country2 = Country.objects.all()[20:40]
+    country3 = Country.objects.all()[40:60]
+    country4 = Country.objects.all()[60:80]
     if request.method == 'POST':
         form1 = RecipeForm(request.POST, request.FILES)
         if form1.is_valid():
@@ -78,6 +82,10 @@ def createrecipe(request):
     form1 = RecipeForm()
     createrecipe = {
         'form1': form1,
-        'error': error
+        'error': error,
+        'country1': country1,
+        'country2': country2,
+        'country3': country3,
+        'country4': country4
     }
     return render(request, 'main/createrecipe.html', createrecipe)
