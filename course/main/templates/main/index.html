@@ -109,10 +109,9 @@
                                     <li><a href="#">Pages</a></li>
                                     <li><a href="#">Mega Menu</a></li>
                                     <li><a href="recomendation/">Советы</a></li>
-                                    <li><a href="card/">4 Vegans</a></li>
+                                    <li><a href="tableproduct/">4 Vegans</a></li>
                                     <li><a href="category/">Категории</a></li>
                                 </ul>
-
                             </div>
                             <!-- Nav End -->
                         </div>
@@ -303,7 +302,7 @@
                                 <h5>{{ el.Name }}</h5>
                             </a>
                             <div class="ratings">
-                                 <i>НЕТ ОТЗЫВОВ</i>
+                                <i>НЕТ ОТЗЫВОВ</i>
                                 {% for j in recipe4 %}
                                 {% if el.RecipeID == j.RecipeID_id %}
                                     {% if j.Rating == 1 %}

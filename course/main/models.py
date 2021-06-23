@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User, Group
 
 
+class TypeIngredient(models.Model):
+   # IDtype = models.ForeignKey(Ingredients, on_delete=models.CASCADE, primary_key=True)
+    IDtype = models.AutoField(primary_key=True)
+    Name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.IDtype)
+
+    class Meta:
+        verbose_name = 'ID Типа'
+        verbose_name_plural = 'ID Типа'
+
+
 class Ingredients(models.Model):
     IngredientsID = models.AutoField(primary_key=True)
     NameIngredients = models.TextField()
@@ -9,6 +22,8 @@ class Ingredients(models.Model):
     Proteins = models.IntegerField()
     Fats = models.IntegerField()
     Carbohydrates = models.IntegerField()
+    IDtype = models.ForeignKey(TypeIngredient, on_delete=models.CASCADE, null=True, blank=True)
+    # IDtype = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.NameIngredients

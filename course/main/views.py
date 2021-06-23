@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Recipe, Category, Country, Recommendation, Rating
+from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients
 from .form import RecommendationForm
 from django.contrib.auth.models import User
 
@@ -34,6 +34,13 @@ def card(request):
 def recom(request):
     recomendation = Recommendation.objects.all()
     return render(request, 'main/recomendation.html', {'recomendation': recomendation})
+
+
+def tablepr(request):
+    tablepr1 = TypeIngredient.objects.all()
+    tablepr2 = Ingredients.objects.all()
+    tableproduct = {"tablepr1": tablepr1, "tablepr2": tablepr2}
+    return render(request, 'main/tableproduct.html', tableproduct)
 
 
 def createrecom(request):
