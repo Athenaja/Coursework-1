@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips # Order
+from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips, Order
 from .form import RecommendationForm, RecipeForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -9,13 +9,13 @@ from django.core import serializers
 
 
 def dashboard_with_pivot(request):
-    return render(request, 'dashboard_with_pivot.html', {})
+    return render(request, 'main/dashboard_with_pivot.html', {})
 
 
-#def pivot_data(request):
-#    dataset = Order.objects.all()
- #   data = serializers.serialize('json', dataset)
-   # return JsonResponse(data, safe=False)
+def pivot_data(request):
+    dataset = Ingredients.objects.all()
+    data = serializers.serialize('json', dataset)
+    return JsonResponse(data, safe=False)
 
 
 def index(request):

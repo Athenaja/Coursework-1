@@ -166,5 +166,19 @@ class EquipmentTips(models.Model):
         return str(self.EquipmentTipsName)
 
     class Meta:
-        verbose_name = 'Советы по оборудованию'
-        verbose_name_plural = 'Совет по оборудованию'
+        verbose_name = 'Правило'
+        verbose_name_plural = 'Правила'
+
+
+class Order(models.Model):
+    product_category = models.CharField(max_length=20)
+    payment_method = models.CharField(max_length=50)
+    shipping_cost = models.CharField(max_length=50)
+    unit_price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return str(self.product_category)
+
+    class Meta:
+        verbose_name = 'Дашбоард'
+        verbose_name_plural = 'Дашбоард'
