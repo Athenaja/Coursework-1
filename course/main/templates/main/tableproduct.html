@@ -33,7 +33,16 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="stylesheet" href="{% static 'categorystyle/style.css' %}" />
 
-    <style></style>
+    <style>
+      #myInput {
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+    </style>
   </head>
 
   <body>
@@ -172,14 +181,37 @@
       videoId: '9uQToEjjGhk'
     });
   }
+</script><script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 </script>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
     <div class="container">
       <div class="row">
         <div class="col-7">
           <div class="container">
             <h5 class="tableCaption">Таблица КБЖУ</h5>
             <div class="table-wrap">
-              <table class="table">
+              <table class="table" id="myTable">
                 <thead>
                   <tr>
                     <th>Наименование</th>
@@ -212,10 +244,17 @@
                 <thead>
                   <tr>
                     <th>Продукт</th>
-                    <th>Тип</th>
+                    <th>
+                      <select id="digits">
+                        <option value="">Тип</option>
+                        <option value="Овощ">Овощ</option>
+                        <option value="Соус">Соус</option>
+                        <option value="Приправа">Приправа</option>
+                      </select>
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="target">
                 {% for i in tablepr1 %}
                 {% for j in tablepr2 %}
                 {% if i.IDtype == j.IDtype_id %}
@@ -279,6 +318,68 @@
       </div>
     </footer>
 
+    <script src="{% static 'js/filterTable.v1.0.min.js' %}"></script>
+<script>
+    filterTable( document.getElementById("target"), {
+            /* Фильтр для первого столбца чекбоксы: */
+            0: new filterTable.Filter([ /* Элементы фильтра */
+                    document.getElementById("charA"),
+                    document.getElementById("charB"),
+                    document.getElementById("charC")
+                ],
+                /* Коллбэк ф-ция валидации */
+                function (value, filters, i) {
+                    /* Если чекбокс не отмечен - его значение не учавствует
+                       в валидации поэтому мы обязаны вернуть true */
+                    if (false === filters[i].checked) return true;
+                    /* Далее, при проверке, мы должны одновременно проверять
+                       значения всех элементов набора при условии чекбокс
+                       отмечен */
+                    return filters[0].checked && filters[0].value === value ||
+                            filters[1].checked && filters[1].value === value ||
+                            filters[2].checked && filters[2].value === value;
+                }
+            ),
+
+            /* Фильтр для второго столбца текстовое поле - только точное совпадение: */
+            1: document.getElementById("text"),
+
+            /* Фильтр для третьего столбца выпадающий список: */
+            2: document.getElementById("digits"),
+
+            /* Фильтр для четвертого столбца радио кнопки: */
+            3: new filterTable.Filter([/* Элеменеты фильтра */
+                    document.getElementById("radioZ"),
+                    document.getElementById("radioA"),
+                    document.getElementById("radioB"),
+                    document.getElementById("radioC")
+                ],
+                /* Коллбэк ф-ция валидации */
+                function (value, filters, i) {
+                    /* В filters[0] - у нас радио кнопка "Не выбрано", если она
+                       установлена фильтр не участвует в валидации и мы
+                       обязаны вернуть true */
+                    if (true === filters[0].checked) return true;
+                    /* Если какая то радиокнопка отмечена и содержимое проверяемой
+                      ячейки совпало то вернем true */
+                    return filters[1].checked && filters[1].value === value ||
+                           filters[2].checked && filters[2].value === value ||
+                           filters[3].checked && filters[3].value === value;
+                }
+            ),
+
+            /* Фильтр для пятого столбца Постепенный ввод слова: */
+            4: new filterTable.Filter(document.getElementById("regexp"),
+                /* Коллбэк ф-ция валидации */
+                function (value, filters, i) {
+                    return value.indexOf(filters[i].value) === 0;
+                },
+                /* Будем вызывать валидацию по событию onkeyup фильтра */
+                "onkeyup"
+            )
+        }
+    );
+</script>
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
