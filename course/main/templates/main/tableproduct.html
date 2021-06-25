@@ -35,14 +35,73 @@
 
     <style>
       #myInput {
-    width: 100%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #40ba37;
+}
+    .video{
+      margin-left: 150px;
+      margin-right: 150px;
+    }
 }
 
     </style>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>
+$(function () {
+    $(document.getElementById("myR")).tablework();
+});
+$.fn.tablework = function() {
+    return this.each(function() {
+        var $table = $(this),
+            $thead = $table.find('thead');
+        !$thead.length && ($thead = $('<thead/>').prependTo($table));
+        var $tr = $('<tr/>').prependTo($thead),
+            hide = {};
+        $("tbody tr:first>", $table).each(function(indx, element) {
+            var range = ['Без выбора'],
+                $td = $("tbody tr :nth-of-type(" + (indx + 1) + ")", $table),
+                temp = {};
+            $td.each(function(i, el) {
+                var text = $(this).text()
+                if (!temp[text]) {
+                    range.unshift(text);
+                    temp[text] = true
+                };
+            });
+
+            var $select = $('<select/>', {
+                'change': function() {
+                    var val = this.value;
+                    hide[indx] = [];
+                    this.selectedIndex && $td.each(function(i, el) {
+                        $(this).text() != val && hide[indx].push(i)
+                    });
+                    var range = [];
+                    for (var k in hide) range = range.concat(hide[k]);
+
+                    var $tr = $("tbody tr", $table);
+                    $tr.show();
+                    $.each(range, function(i, el) {
+                        $tr.eq(el).hide()
+                    });
+                }
+
+            });
+            $.each(range, function() {
+                $('<option/>', {
+                    text: this
+                }).prependTo($select);
+            });
+            $('<td/>').append($select).appendTo($tr);
+        });
+
+    });
+};
+</script>
   </head>
 
   <body>
@@ -162,7 +221,11 @@
         </div>
       </div>
     </div>
-<div id="ytplayer"></div>
+    <div class="container justify-content-center">
+    <div class="video row">
+        <div id="ytplayer"></div>
+      </div>
+    </div>
 
 <script>
   // Load the IFrame Player API code asynchronously.
@@ -204,10 +267,12 @@ function myFunction() {
 }
 </script>
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    <div class="container mt-50 mb-50" style="padding-left: 40px; padding-right: 40px;">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Введите наименование продукта" title="Type in a name">
+    </div>
     <div class="container">
       <div class="row">
-        <div class="col-7">
+        <div class="col">
           <div class="container">
             <h5 class="tableCaption">Таблица КБЖУ</h5>
             <div class="table-wrap">
@@ -240,21 +305,14 @@ function myFunction() {
           <div class="container">
             <h5 class="tableCaption">Таблица типов продуктов</h5>
             <div class="table-wrap">
-              <table class="table">
+              <table class="table" id="myR">
                 <thead>
                   <tr>
                     <th>Продукт</th>
-                    <th>
-                      <select id="digits">
-                        <option value="">Тип</option>
-                        <option value="Овощ">Овощ</option>
-                        <option value="Соус">Соус</option>
-                        <option value="Приправа">Приправа</option>
-                      </select>
-                    </th>
+                    <th>Тип</th>
                   </tr>
                 </thead>
-                <tbody id="target">
+                <tbody>
                 {% for i in tablepr1 %}
                 {% for j in tablepr2 %}
                 {% if i.IDtype == j.IDtype_id %}
@@ -318,77 +376,16 @@ function myFunction() {
       </div>
     </footer>
 
-    <script src="{% static 'js/filterTable.v1.0.min.js' %}"></script>
-<script>
-    filterTable( document.getElementById("target"), {
-            /* Фильтр для первого столбца чекбоксы: */
-            0: new filterTable.Filter([ /* Элементы фильтра */
-                    document.getElementById("charA"),
-                    document.getElementById("charB"),
-                    document.getElementById("charC")
-                ],
-                /* Коллбэк ф-ция валидации */
-                function (value, filters, i) {
-                    /* Если чекбокс не отмечен - его значение не учавствует
-                       в валидации поэтому мы обязаны вернуть true */
-                    if (false === filters[i].checked) return true;
-                    /* Далее, при проверке, мы должны одновременно проверять
-                       значения всех элементов набора при условии чекбокс
-                       отмечен */
-                    return filters[0].checked && filters[0].value === value ||
-                            filters[1].checked && filters[1].value === value ||
-                            filters[2].checked && filters[2].value === value;
-                }
-            ),
 
-            /* Фильтр для второго столбца текстовое поле - только точное совпадение: */
-            1: document.getElementById("text"),
-
-            /* Фильтр для третьего столбца выпадающий список: */
-            2: document.getElementById("digits"),
-
-            /* Фильтр для четвертого столбца радио кнопки: */
-            3: new filterTable.Filter([/* Элеменеты фильтра */
-                    document.getElementById("radioZ"),
-                    document.getElementById("radioA"),
-                    document.getElementById("radioB"),
-                    document.getElementById("radioC")
-                ],
-                /* Коллбэк ф-ция валидации */
-                function (value, filters, i) {
-                    /* В filters[0] - у нас радио кнопка "Не выбрано", если она
-                       установлена фильтр не участвует в валидации и мы
-                       обязаны вернуть true */
-                    if (true === filters[0].checked) return true;
-                    /* Если какая то радиокнопка отмечена и содержимое проверяемой
-                      ячейки совпало то вернем true */
-                    return filters[1].checked && filters[1].value === value ||
-                           filters[2].checked && filters[2].value === value ||
-                           filters[3].checked && filters[3].value === value;
-                }
-            ),
-
-            /* Фильтр для пятого столбца Постепенный ввод слова: */
-            4: new filterTable.Filter(document.getElementById("regexp"),
-                /* Коллбэк ф-ция валидации */
-                function (value, filters, i) {
-                    return value.indexOf(filters[i].value) === 0;
-                },
-                /* Будем вызывать валидацию по событию onkeyup фильтра */
-                "onkeyup"
-            )
-        }
-    );
-</script>
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
+     <!--<script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>-->
     <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
 
-    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+   <!-- <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>-->
     <!-- Popper js -->
-    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
     <!-- Bootstrap js -->
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     <!-- All Plugins js -->
