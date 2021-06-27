@@ -9,14 +9,12 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Полезности</title>
-    <!-- Bootstrap CSS (jsDelivr CDN) -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
       crossorigin="anonymous"
     />
-    <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
@@ -24,22 +22,24 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'recomendationstyle/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'recomendationstyle/css/style.css' %}"
+    />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <style>
-    .redou{
-    width: 100%;
-    }
-    .redou1{
-    text-align: center !important;
-    }
+      .redou {
+        width: 100%;
+      }
+      .redou1 {
+        text-align: center !important;
+      }
     </style>
   </head>
 
   <body>
     <header class="header-area">
-      <!-- Top Header Area -->
       <div class="top-header-area">
         <div class="container h-100">
           <div class="row h-100 align-items-center justify-content-between">
@@ -51,9 +51,13 @@
                     {% if user.is_authenticated %}
                     <li><a href="#">Привет, {{ user.username }}!</a></li>
                     {% endif %}
-                    <li><a href="#">Добро пожаловать на лучший сайт с рецептами!</a></li>
+                    <li>
+                      <a href="#"
+                        >Добро пожаловать на лучший сайт с рецептами!</a
+                      >
+                    </li>
                     <li><a href="#">Приятного аппетита!</a></li>
-                </ul>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -84,55 +88,45 @@
           </div>
         </div>
       </div>
-      <!-- Navbar Area -->
       <div class="delicious-main-menu">
         <div class="classy-nav-container breakpoint-off">
           <div class="container">
-            <!-- Menu -->
             <nav
               class="classy-navbar justify-content-between"
               id="deliciousNav"
             >
-              <!-- Logo -->
               <a class="nav-brand" href="../"
                 ><img src="{% static 'img/core-img/logo.png' %}" alt=""
               /></a>
-
-              <!-- Navbar Toggler -->
               <div class="classy-navbar-toggler">
                 <span class="navbarToggler"
                   ><span></span><span></span><span></span
                 ></span>
               </div>
-
-              <!-- Menu -->
               <div class="classy-menu">
-                <!-- close btn -->
                 <div class="classycloseIcon">
                   <div class="cross-wrap">
                     <span class="top"></span><span class="bottom"></span>
                   </div>
                 </div>
-
-                <!-- Nav Start -->
                 <div class="classynav">
                   <ul>
                     <li><a href="../">Главная</a></li>
                     <li><a href="../equipmentTips/">Правила</a></li>
                     <li><a href="../dictionary/">Кулинарный словарь</a></li>
-                    <li class="active"><a href="../recomendation/">Советы</a></li>
+                    <li class="active">
+                      <a href="../recomendation/">Советы</a>
+                    </li>
                     <li><a href="../tableproduct/">Таблица продуктов</a></li>
                     <li><a href="../category/">Категории</a></li>
                   </ul>
                 </div>
-                <!-- Nav End -->
               </div>
             </nav>
           </div>
         </div>
       </div>
     </header>
-  <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-content">
         <h3>Cooking in progress..</h3>
@@ -154,7 +148,6 @@
         </div>
       </div>
     </div>
-    <!-- Welcome Area Starts -->
     <section class="welcome-area section-padding2">
       <div class="container-fluid">
         <div class="row">
@@ -173,15 +166,12 @@
                 <span class="style-change">Кулинарные</span> <br />полезности
               </h3>
               <p class="pt-3">
-                Created god gathered don't you yielding herb you had. And isn't,
-                god was saw. Dominion. Great sixth for in unto was. Open can't
-                tree am waters brought. Divide after there. Was.
+                Кулинария - это не просто комбинации продуктов, это целое искусство!
+                Легко ли им овладеть? Да, но только вместе с нами!
               </p>
               <p>
-                Created god gathered don't you yielding herb you had. And isn't,
-                god was saw. Dominion. Great sixth for in unto was. Open can't
-                tree waters brought. Divide after there. Was. Created god
-                gathered don't you yielding herb you had. And isn't god.
+                В этом разделе вы можете посмотреть советы других пользователей нашего сервиса. Но и ты, именно ТЫ можешь внести свой вклад!
+                Знаете что-то особенное? Кулинарный секрет? Напишите его,а мы опубликуем!
               </p>
               {% if user.is_authenticated %}
               <a
@@ -205,9 +195,6 @@
         </div>
       </div>
     </section>
-    <!-- Welcome Area End -->
-
-    <!-- Deshes Area Starts -->
     <div class="deshes-area section-padding">
       <div class="container">
         <div class="row">
@@ -216,7 +203,8 @@
               <h3 class="redou">Our <span>special</span> deshes</h3>
               <p>
                 <i
-                  >Полезные кулинарные советы и хитрости, которые могут пригодиться не только на кухне...</i
+                  >Полезные кулинарные советы и хитрости, которые могут
+                  пригодиться не только на кухне...</i
                 >
               </p>
             </div>
@@ -224,26 +212,24 @@
         </div>
         {% for el in recomendation %}
         <div class="row">
-          <div class="col-lg-5 col-md-6 align-self-center">
-            <div class="deshes-text">
+          <div class="col-lg-8 col-md-12 align-self-center">
+            <div class="mt-50">
               <h2>
-                <span>{{ el.Name }}</span><br />
+                <span>
+                  {{ el.Name }}
+                </span>
               </h2>
-              <p class="pt-3">
-               {{ el.Instruction }}
-              </p>
+              <p>{{ el.Instruction }}</p>
             </div>
           </div>
-          <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
-            <img src="{{ el.Img.url }}" class=" redo1" />
+          <div
+            class="col-lg-4 align-self-center mt-15 mt-md-5">
+            <img src="{{ el.Img.url }}" class="redo1" />
           </div>
         </div>
         {% endfor %}
       </div>
     </div>
-    <!-- Deshes Area End -->
-
-    <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
       <div class="container h-100">
         <div class="row h-100">
@@ -257,7 +243,6 @@
               justify-content-between
             "
           >
-            <!-- Footer Social Info -->
             <div class="footer-social-info text-right">
               <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
               <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -266,43 +251,28 @@
               <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
               <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
-            <!-- Footer Logo -->
             <div class="footer-logo">
-              <a href="index.html"
+              <a href="../"
                 ><img src="{% static 'img/core-img/logo.png' %}" alt=""
               /></a>
             </div>
-            <!-- Copywrite -->
             <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              All rights reserved | This template is made with
-              <i class="fa fa-heart-o" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Данный сайт выполнен в качестве курсового проекта студентами МПУ
+              группы 191-361
             </p>
           </div>
         </div>
       </div>
     </footer>
-
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
     <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
-
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
     <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    <!-- All Plugins js -->
     <script src="{% static 'js/plugins/plugins.js' %}"></script>
-    <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
   </body>
 </html>

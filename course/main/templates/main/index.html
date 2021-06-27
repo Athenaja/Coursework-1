@@ -7,26 +7,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Главная</title>
-      <!-- Bootstrap CSS (jsDelivr CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-  <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- Favicon -->
-    <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{% static 'preloaderstyle.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-
 <body>
-
-
-
-    <!-- Search Wrapper -->
     <div class="search-wrapper">
-        <!-- Close Btn -->
         <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -38,15 +26,10 @@
             </div>
         </div>
     </div>
-
-    <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-
-        <!-- Top Header Area -->
         <div class="top-header-area">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-between">
-                    <!-- Breaking News -->
                     <div class="col-12 col-sm-6">
                         <div class="breaking-news">
                             <div id="breakingNewsTicker" class="ticker">
@@ -60,8 +43,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Top Social Info -->
                     <div class="col-12 col-sm-6">
                         <div class="top-social-info text-right">
                             <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
@@ -79,30 +60,18 @@
                 </div>
             </div>
         </div>
-        <!-- Navbar Area -->
         <div class="delicious-main-menu">
             <div class="classy-nav-container breakpoint-off">
                 <div class="container">
-                    <!-- Menu -->
                     <nav class="classy-navbar justify-content-between" id="deliciousNav">
-
-                        <!-- Logo -->
                         <a class="nav-brand" href=""><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-
-                        <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
                             <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-
-                        <!-- Menu -->
                         <div class="classy-menu">
-
-                            <!-- close btn -->
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-
-                            <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
                                     <li class="active"><a href="">Главная</a></li>
@@ -113,14 +82,12 @@
                                     <li><a href="category/">Категории</a></li>
                                 </ul>
                             </div>
-                            <!-- Nav End -->
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- ##### Header Area End ##### -->
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-content">
         <h3>Cooking in progress..</h3>
@@ -142,52 +109,46 @@
         </div>
       </div>
     </div>
-    <!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
         <div class="hero-slides owl-carousel">
-            <!-- Single Hero Slide -->
             <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/bg1.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Хотите добавить новый рецепт??</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Спасибо, что решили присоединиться к обмену рецептами! Наш сайт как раз и создан для такого обмена опытом и умением. С вашей помощью мы сможем создать полную базу самых разных рецептов.</p>
+                                <p data-animation="fadeInUp" data-delay="700ms">Спасибо, что решили присоединиться к обмену рецептами! Наш сайт как раз и создан для такого обмена опытом и умением.</p>
                                 {% if user.is_authenticated %}
-                                <a href="createrecipe/" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Добавить свой рецепт</a>
+                                <a href="createrecipe/" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Добавить рецепт</a>
                                 {% else %}
-                                <a href="{% url 'login' %}" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Добавить свой рецепт</a>
+                                <a href="{% url 'login' %}" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Добавить рецепт</a>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Single Hero Slide -->
             <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/bg10.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Следите за своей фигурой?</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">У нас на сайте есть таблица продуктов, созданная специально для людей которые следят за своим питанием. В ней собраны продукты и их КБЖУ.</p>
-                                <a href="tableproduct/" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Посмотреть таблицу продуктов</a>
+                                <p data-animation="fadeInUp" data-delay="700ms">У нас на сайте есть таблица продуктов, созданная специально для людей которые следят за своим питанием.</p>
+                                <a href="tableproduct/" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Таблица продуктов</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Single Hero Slide -->
             <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/bg9.jpg' %});">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Алхимия Запределья</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">Алхимия – это искусство превращения трав и других ингредиентов в полезные зелья, эликсиры, фляги и новые котлы. Она также используется для трансмутации сырых драгоценных камней в два Бриллианта, используемых в ювелирном деле, и для преобразования первобытных элементалей в других типов первобытных, аналогично тому, как вы конвертируете один тип элементальной сущности из одного.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">See Receipe</a>
+                                <p data-animation="fadeInUp" data-delay="700ms">Алхимия – это искусство превращения трав и других ингредиентов в полезные зелья, эликсиры, фляги и новые котлы.</p>
+                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Открыть раздел</a>
                             </div>
                         </div>
                     </div>
@@ -195,40 +156,30 @@
             </div>
         </div>
     </section>
-    <!-- ##### Hero Area End ##### -->
-
-    <!-- ##### Top Catagory Area Start ##### -->
     <section class="top-catagory-area section-padding-80-0">
         <div class="container">
             <div class="row">
-                <!-- Top Catagory Area -->
                 <div class="col-12 col-lg-6">
                     <div class="single-top-catagory">
                         <img src="{% static 'img/bg-img/bg2.jpg' %}" alt="">
-                        <!-- Content -->
                         <div class="top-cta-content">
                             <h6>Знаете что такое Абака?</h6>
-                            <a href="dictionary/" class="btn delicious-btn">Здесь вы можете это узнать</a>
+                            <a href="dictionary/" class="btn delicious-btn">Посмотреть</a>
                         </div>
                     </div>
                 </div>
-                <!-- Top Catagory Area -->
                 <div class="col-12 col-lg-6">
                     <div class="single-top-catagory">
                         <img src="{% static 'img/bg-img/bg3.jpg' %}" alt="">
-                        <!-- Content -->
                         <div class="top-cta-content">
                             <h6>Дашбоард продуктов</h6>
-                            <a href="dashboard/" class="btn delicious-btn">Здесь вы можете это увидеть</a>
+                            <a href="dashboard/" class="btn delicious-btn">Посмотреть</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Top Catagory Area End ##### -->
-
-    <!-- ##### Best Receipe Area Start ##### -->
     <section class="best-receipe-area">
         <div class="container">
             <div class="row">
@@ -238,11 +189,8 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 {% for el in recipe1 %}
-                <!-- Single Best Receipe Area -->
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
                             <img src="{{ el.Img.url }}">
@@ -265,46 +213,35 @@
             </div>
         </div>
     </section>
-    <!-- ##### Best Receipe Area End ##### -->
-
-    <!-- ##### CTA Area Start ##### -->
     <section class="cta-area bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg8.jpg' %});">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <!-- Cta Content -->
                     <div class="cta-content text-center">
                         <h2>Extra Spicy Receipies</h2>
-                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>
-                        <a href="#" class="btn delicious-btn">Discover all the receipies</a>
+                        <p>У нас представлена эксклюзивная коллекция самых острых блюд со всех уголков мира. Рискнете попробовать?</p>
+                        <a href="#" class="btn delicious-btn">Открыть раздел</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### CTA Area End ##### -->
-
-    <!-- ##### Small Receipe Area Start ##### -->
     <section class="small-receipe-area section-padding-80-0">
         <div class="container">
             <h2 style="text-align: center; margin-top:-60px; margin-bottom:30px">Недавно добавленные</h2>
             <div class="row">
                  {% for el in recipe2 %}
-                <!-- Small Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
                             <img src="{{ el.Img.url }}">
                         </div>
-                        <!-- Receipe Content -->
                         <div class="receipe-content">
                             <span>{{ el.CreateDate }}</span>
                             <a href="receipe-post.html">
                                 <h5>{{ el.Name }}</h5>
                             </a>
                             <div class="ratings">
-                                <i>НЕТ ОТЗЫВОВ</i>
                                 {% for j in recipe4 %}
                                 {% if el.RecipeID == j.RecipeID_id %}
                                     {% if j.Rating == 1 %}
@@ -344,6 +281,7 @@
                                     {% endif %}
                                 {% endif %}
                                 {% endfor %}
+                                <i>Нет отзывов</i>
                             </div>
                         </div>
                     </div>
@@ -353,9 +291,6 @@
             </div>
         </div>
     </section>
-    <!-- ##### Small Receipe Area End ##### -->
-
-    <!-- ##### Follow Us Instagram Area Start ##### -->
     <div class="follow-us-instagram">
         <div class="container">
             <div class="row">
@@ -364,80 +299,55 @@
                 </div>
             </div>
         </div>
-        <!-- Instagram Feeds -->
         <div class="insta-feeds d-flex flex-wrap">
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta1.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">ВЫПЕЧКА</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta2.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">САЛАТЫ</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta3.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">ХОЛОДНЫЕ СУПЫ</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta4.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">БЛЮДА ИЗ ПТИЦЫ</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta5.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">ДЕСЕРТЫ</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta6.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">ЗАВТРАКИ</i></a>
                 </div>
             </div>
-
-            <!-- Single Insta Feeds -->
             <div class="single-insta-feeds">
                 <img src="{% static 'img/bg-img/insta7.jpg' %}" alt="">
-                <!-- Icon -->
                 <div class="insta-icon">
                     <a href="#"><i aria-hidden="true">НАПИТКИ</i></a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ##### Follow Us Instagram Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
-                    <!-- Footer Social Info -->
                     <div class="footer-social-info text-right">
                         <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -446,33 +356,23 @@
                         <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </div>
-                    <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                        <a href="../"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
                     </div>
-                    <!-- Copywrite -->
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    <p>
+                        <script>document.write(new Date().getFullYear());</script>
+                        Данный сайт выполнен в качестве курсового проекта студентами МПУ группы 191-361
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area Start ##### -->
-    <!-- ##### All Javascript Files ##### -->
     <script src="{% static 'categorystyle/js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Active js -->
     <script src="{% static 'categorystyle/js/active.js' %}"></script>
-    <!-- jQuery-2.2.4 js -->
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
     <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    <!-- All Plugins js -->
     <script src="{% static 'js/plugins/plugins.js' %}"></script>
-    <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
 </body>
-
 </html>
