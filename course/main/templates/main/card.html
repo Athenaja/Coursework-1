@@ -35,6 +35,34 @@
     <link rel="stylesheet" href="{% static 'categorystyle/style.css' %}" />
 
     <style>
+  @media print {
+	html, body{
+		height: 297mm !important;
+		width: 210mm !important;
+	  }
+	*, *:before, *:after {
+		color: #000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	  }
+	.header, .footer {
+		display: none !important;
+	  }
+	.noprint {
+		display: none !important;
+	  }
+	.printfont{
+	    font-size: 26px;
+	  }
+	.printfont1{
+	    font-size: 26px !important;
+	  }
+	.diver{
+	  page-break-inside:avoid-page !important;
+	  }
+    }
+
+
       /* :: 11.0 Ingredients Area CSS */
       .recipe-info {
         position: relative;
@@ -129,7 +157,7 @@
   </head>
 
   <body>
-    <header class="header-area">
+    <header class="header-area noprint">
       <!-- Top Header Area -->
       <div class="top-header-area">
         <div class="container h-100">
@@ -246,7 +274,7 @@
       </div>
     </div>
 
-    <section class="post-news-area section-padding-100-0 mb-70">
+    <section class="post-news-area section-padding-100-0 mb-70 ">
       <div class="container">
         <div class="row justify-content-center">
           <!-- Post Details Content Area -->
@@ -256,17 +284,16 @@
                 <img src="{{ recipe.Img.url }}">
               </div>
               <div class="blog-content">
-                <a href="#" class="post-tag">Имя категории</a>
                 <h4 class="post-title">{{ recipe.Name }}</h4>
                 <div class="post-meta mb-30">
                   <p>{{ recipe.CreateDate }}</p>
                 </div>
                 <h5 class="mb-30">Описание рецепта</h5>
-                <p class="mb-30">
+                <p class="mb-30 printfont">
                   {{ recipe.Instruction }}
                 </p>
               </div>
-              <div class="main-rating ml-0">
+              <div class="main-rating ml-0 noprint">
                 <h5 class="mb-0">Оцените данный рецепт</h5>
                 <div class="rating">
                     <span>☆</span>
@@ -281,21 +308,23 @@
 
           <div class="col-12 col-lg-4 col-xl-4">
             <!-- Ingredients -->
-            <div class="ingredients">
+            <div class="ingredients diver">
               <h5>Ингредиенты</h5>
               {% for el in recipe.ingredientsrecipe_set.all %}
               <!-- Custom Checkbox -->
-              <div class="custom-control custom-checkbox">
+              <div class="custom-control custom-checkbox diver">
                 <input
                   type="checkbox"
                   class="custom-control-input"
                   id="customCheck{{ el.ID }}"/>
                 <label
-                  class="custom-control-label"
+                  class="custom-control-label printfont1 diver"
                   for="customCheck{{ el.ID }}">
                     {% for er in test %}
                       {% if el.IngredientsID_id == er.IngredientsID %}
                         {{ er.NameIngredients }}
+                        //
+                        {{ el.CountsOnRecipe }}
                       {% endif %}
                     {% endfor %}
                 </label>
@@ -310,7 +339,7 @@
           <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
             <div class="sidebar-area">
               <!-- Single Widget Area предлагаю выводить 6 рандомных рецептов-->
-              <div class="single-widget-area post-widget mb-30">
+              <div class="single-widget-area post-widget mb-30 noprint">
                 <!-- Single Post Area -->
 
                 <div class="single-post-area v-flex">
@@ -336,7 +365,7 @@
       </div>
     </section>
 
-    <footer class="footer-area">
+    <footer class="footer-area noprint">
       <div class="container h-100">
         <div class="row h-100">
           <div
