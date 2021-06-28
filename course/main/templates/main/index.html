@@ -198,7 +198,7 @@
                                 <img src="{{ el.Img.url }}">
                                 <div class="receipe-content">
                                     <h5>{{ el.Name }}</h5>
-                            </a>
+
                                 <div class="ratings">
                                 {% for j in recipe4 %}
                                 {% if el.RecipeID == j.RecipeID_id %}
@@ -240,7 +240,8 @@
                                 {% endif %}
                                 {% endfor %}
                                 </div>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 {% endfor %}
