@@ -148,7 +148,7 @@
                             <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="300ms">Алхимия Запределья</h2>
                                 <p data-animation="fadeInUp" data-delay="700ms">Алхимия – это искусство превращения трав и других ингредиентов в полезные зелья, эликсиры, фляги и новые котлы.</p>
-                                <a href="#" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Открыть раздел</a>
+                                <a href="category/" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Открыть раздел</a>
                             </div>
                         </div>
                     </div>
@@ -191,26 +191,61 @@
             </div>
             <div class="row">
                 {% for el in recipe1 %}
+                <!-- Single Best Receipe Area -->
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
-                            <img src="{{ el.Img.url }}">
-                            <div class="receipe-content">
-                                <a href="../card/">
+                            <a href="{{ el.get_absolute_url }}">
+                                <img src="{{ el.Img.url }}">
+                                <div class="receipe-content">
                                     <h5>{{ el.Name }}</h5>
-                                </a>
+                            </a>
                                 <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                {% for j in recipe4 %}
+                                {% if el.RecipeID == j.RecipeID_id %}
+                                    {% if j.Rating == 1 %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                    {% if j.Rating == 2 %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                    {% if j.Rating == 3 %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                    {% if j.Rating == 4 %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                    {% if j.Rating == 5 %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    {% endif %}
+                                {% endif %}
+                                {% endfor %}
                                 </div>
-                                <p>11<!--{{ el.Instruction }}--></p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
+        <h2>Всего рецептов на сайте: {{ recipe5 }}</h2>
         </div>
     </section>
     <section class="cta-area bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg8.jpg' %});">
@@ -220,7 +255,7 @@
                     <div class="cta-content text-center">
                         <h2>Extra Spicy Receipies</h2>
                         <p>У нас представлена эксклюзивная коллекция самых острых блюд со всех уголков мира. Рискнете попробовать?</p>
-                        <a href="#" class="btn delicious-btn">Открыть раздел</a>
+                        <a href="category/" class="btn delicious-btn">Открыть категории</a>
                     </div>
                 </div>
             </div>
@@ -238,7 +273,7 @@
                         </div>
                         <div class="receipe-content">
                             <span>{{ el.CreateDate }}</span>
-                            <a href="receipe-post.html">
+                            <a href="#">
                                 <h5>{{ el.Name }}</h5>
                             </a>
                             <div class="ratings">
@@ -281,7 +316,6 @@
                                     {% endif %}
                                 {% endif %}
                                 {% endfor %}
-                                <i>Нет отзывов</i>
                             </div>
                         </div>
                     </div>

@@ -78,7 +78,7 @@
               class="classy-navbar justify-content-between"
               id="deliciousNav"
             >
-              <a class="nav-brand" href="../"
+              <a class="nav-brand" href="../../../"
                 ><img src="{% static 'img/core-img/logo.png' %}" alt=""
               /></a>
               <div class="classy-navbar-toggler">
@@ -94,12 +94,12 @@
                 </div>
                 <div class="classynav">
                   <ul>
-                    <li><a href="../">Главная</a></li>
-                    <li><a href="../equipmentTips/">Правила</a></li>
-                    <li><a href="../dictionary/">Кулинарный словарь</a></li>
-                    <li><a href="../recomendation/">Советы</a></li>
-                    <li><a href="../tableproduct/">Таблица продуктов</a></li>
-                    <li class="active"><a href="../category/">Категории</a></li>
+                    <li><a href="../../../">Главная</a></li>
+                    <li><a href="../../../equipmentTips/">Правила</a></li>
+                    <li><a href="../../../dictionary/">Кулинарный словарь</a></li>
+                    <li><a href="../../../recomendation/">Советы</a></li>
+                    <li><a href="../../../tableproduct/">Таблица продуктов</a></li>
+                    <li><a href="../category/">Категории</a></li>
                   </ul>
                 </div>
               </div>
@@ -132,16 +132,20 @@
     <div class="post-catagory section-padding-100">
       <div class="container">
         <div class="row">
-          {% for el in category %}
+          {% for el in category.recipecategory_set.all %}
           <div class="col-12 col-sm-6 col-lg-4">
             <div class="single-post-catagory mb-30">
-              <img src="{{ el.Img.url }}" alt="" />
-              <div class="catagory-content-bg">
-                <div class="catagory-content">
-                  <a href="{{ el.get_absolute_url }}" class="post-tag">Категория</a>
-                  <a href="{{ el.get_absolute_url }}" class="post-title">{{ el.Name }}</a>
-                </div>
-              </div>
+              {% for er in test %}
+                {% if el.RecipeID_id == er.RecipeID %}
+                  <img src="{{ er.Img.url }}" alt="" />
+                    <div class="catagory-content-bg">
+                      <div class="catagory-content">
+                        <a href="{{ er.get_absolute_url }}" class="post-tag">Рецепт</a>
+                        <a href="{{ er.get_absolute_url }}" class="post-title">{{ er.Name }}</a>
+                      </div>
+                    </div>
+                {% endif %}
+              {% endfor %}
             </div>
           </div>
           {% endfor %}
@@ -170,7 +174,7 @@
               <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
             <div class="footer-logo">
-              <a href="../"
+              <a href="../../../"
                 ><img src="{% static 'img/core-img/logo.png' %}" alt=""
               /></a>
             </div>

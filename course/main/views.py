@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Recipe, Category, Country, Recommendation, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips, Order
+from .models import Recipe, Category, Country, Recommendation, IngredientsRecipe, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips, Order
 from .form import RecommendationForm, RecipeForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.core import serializers
+from django.views.generic.detail import DetailView
 
 
 
@@ -19,18 +19,13 @@ def pivot_data(request):
 
 
 def index(request):
-    # recipe = Recipe.objects.all()[:6]
-    # <class 'django.db.models.query.QuerySet'>
-    # recipe = Recipe.objects.get(Name='Кимпаб').
-    # recipe = Recipe.objects.filter(Name='Кимпаб')
-    # <class 'main.models.Recipe'>
-    # recipe = Recipe.objects.order_by("-CreateDate")
     recipe1 = Recipe.objects.all()[:6]
     recipe2 = Recipe.objects.order_by("-CreateDate")[:9]
     recipe3 = Recipe.objects.filter(rating__Rating="5")
     recipe4 = Rating.objects.all()
-
-    recipe = {"recipe1": recipe1, "recipe2": recipe2, "recipe3": recipe3, "recipe4": recipe4}
+    recipe5 = Recipe.objects.all().count()
+    recipe = {"recipe1": recipe1, "recipe2": recipe2, "recipe3": recipe3, "recipe4": recipe4, "recipe5": recipe5,
+              "recipe": Recipe.objects.all()}
     return render(request, 'main/index.html', recipe)
 
 
@@ -39,9 +34,26 @@ def category(request):
     return render(request, 'main/category.html', {'category': category})
 
 
-def card(request):
-    country = Country.objects.all()
-    return render(request, 'main/card.html', {'country': country})
+class categorycardDetailView(DetailView):
+    model = Category
+    context_object_name = 'category'
+    template_name = 'main/categorycard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(categorycardDetailView, self).get_context_data(**kwargs)
+        context['test'] = Recipe.objects.all()
+        return context
+
+
+class cardDetailView(DetailView):
+    model = Recipe
+    context_object_name = 'recipe'
+    template_name = 'main/card.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(cardDetailView, self).get_context_data(**kwargs)
+        context['test'] = Ingredients.objects.all()
+        return context
 
 
 def recom(request):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, Group
+from django.urls import reverse
 
 
 class TypeIngredient(models.Model):
@@ -45,6 +46,9 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
+    def get_absolute_url(self):
+        return reverse('category-detail', kwargs={'pk': self.pk})
+
 
 class Country(models.Model):
     CountryID = models.AutoField(primary_key=True)
@@ -85,6 +89,9 @@ class Recipe(models.Model):
     class Meta:
         verbose_name = 'Рецепт'
         verbose_name_plural = 'Рецепты'
+
+    def get_absolute_url(self):
+        return reverse('recipe-detail', kwargs={'pk': self.pk})
 
 
 class RecipeCategory(models.Model):
