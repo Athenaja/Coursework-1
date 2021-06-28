@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, Category, Country, Recommendation, IngredientsRecipe, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips, Order
+from .models import Recipe, Category, Country, Recommendation, IngredientsRecipe, Rating, TypeIngredient, Ingredients, Dictionary, EquipmentTips
 from .form import RecommendationForm, RecipeForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
